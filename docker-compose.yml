@@ -1,0 +1,27 @@
+version: '3'
+services:
+  quizservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: quizservice
+    restart: always
+    depends_on:
+      - mysqldb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/embeddedSys?createDatabaseIfNotExist=true&useSSL=false&&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=123456789
+    ports:
+      - "8085:8085"
+  mysqldb:
+    image: mysql:8.0.33
+    container_name: mysqldb
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456789
+      - MYSQL_DATABASE=embeddedSys
+    volumes:
+      - mysql_embeddedSys:/var/lib/mysql
+volumes:
+  mysql_embeddedSys:
