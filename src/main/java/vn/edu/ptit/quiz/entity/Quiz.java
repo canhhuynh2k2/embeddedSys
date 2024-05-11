@@ -1,5 +1,6 @@
 package vn.edu.ptit.quiz.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,5 +32,9 @@ public class Quiz {
 
     @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy = "quiz")
     private Set<Question> questions;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Category category;
 
 }

@@ -19,9 +19,10 @@ public class QuizController {
 
     private final AdminService adminService;
 
-    @PostMapping
-    public ResponseEntity<QuizDto> createQuiz( @RequestBody QuizAM quizAM){
-        QuizDto res = quizService.createQuiz(quizAM);
+    @PostMapping("/{categoryId}")
+    public ResponseEntity<QuizDto> createQuiz( @PathVariable("categoryId") Long categoryId,
+                                                @RequestBody QuizAM quizAM){
+        QuizDto res = quizService.createQuiz(categoryId, quizAM);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
@@ -30,6 +31,10 @@ public class QuizController {
         return ResponseEntity.ok(quizService.getQuizById(quizId));
     }
 
+    @GetMapping("/all/{categoryId}")
+    public ResponseEntity<?> getAllQuizByCategory(@PathVariable("categoryId") Integer categoryId){
+        return ResponseEntity.ok(quizService.getAllQuizByCategory(categoryId));
+    }
 
 //    @PutMapping("/start/{quizId}")
 //    public ResponseEntity<?> startQuiz(@RequestHeader("authentication") String authToken,
