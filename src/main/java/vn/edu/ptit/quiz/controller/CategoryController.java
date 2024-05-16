@@ -9,6 +9,7 @@ import vn.edu.ptit.quiz.service.CategoryService;
 @RestController
 @RequestMapping("api/category")
 @RequiredArgsConstructor
+@CrossOrigin
 public class CategoryController {
     private final CategoryService categoryService;
 
