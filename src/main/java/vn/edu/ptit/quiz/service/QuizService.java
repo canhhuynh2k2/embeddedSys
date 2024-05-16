@@ -10,6 +10,8 @@ public interface QuizService {
 
     QuizDto getQuizById(Integer quizId);
     List<QuizNameDto> getAllQuizByCategory(Integer categoryId);
+
+    QuizDto generateQuiz(Long categoryId);
 //    QuizDto startQuiz(Integer quizId, StartQuizRequest startQuizRequest);
 //
 //    QuizDto stopQuiz(Integer quizId);

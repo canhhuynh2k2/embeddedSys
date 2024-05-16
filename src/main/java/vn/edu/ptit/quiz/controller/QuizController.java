@@ -36,6 +36,11 @@ public class QuizController {
         return ResponseEntity.ok(quizService.getAllQuizByCategory(categoryId));
     }
 
+    @PostMapping("/generate/{categoryId}")
+    public ResponseEntity<?> generateQuiz(@PathVariable("categoryId") Long categoryId){
+        return ResponseEntity.ok(quizService.generateQuiz(categoryId));
+    }
+
 //    @PutMapping("/start/{quizId}")
 //    public ResponseEntity<?> startQuiz(@RequestHeader("authentication") String authToken,
 //                                       @PathVariable("quizId") Integer quizId,

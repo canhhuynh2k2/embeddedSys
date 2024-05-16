@@ -1,6 +1,8 @@
 package vn.edu.ptit.quiz.config;
 
 public interface AppConstant {
+
+    public static final String OPENAI_API_KEY = "sk-proj-J46U7gSkYd9XOq3uTpPkT3BlbkFJJWEEvKNW9Ytdu8oBk55T";
     public interface ADMIN {
         public static final String ADMIN_USERNAME = "admin";
         public static final String ADMIN_PASSWORD = "admin";
