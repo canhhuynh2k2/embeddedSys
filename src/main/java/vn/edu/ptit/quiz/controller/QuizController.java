@@ -36,7 +36,7 @@ public class QuizController {
         return ResponseEntity.ok(quizService.getAllQuizByCategory(categoryId));
     }
 
-    @PostMapping("/generate/{categoryId}")
+    @GetMapping("/generate/{categoryId}")
     public ResponseEntity<?> generateQuiz(@PathVariable("categoryId") Long categoryId){
         return ResponseEntity.ok(quizService.generateQuiz(categoryId));
     }
