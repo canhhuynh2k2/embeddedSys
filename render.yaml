@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: my-spring-boot-app
+    env: java
+    plan: free
+    buildCommand: mvn clean package
+    startCommand: java -jar target/*.jar
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false

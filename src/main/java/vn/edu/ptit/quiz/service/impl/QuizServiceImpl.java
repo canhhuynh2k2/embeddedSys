@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -45,6 +46,9 @@ public class QuizServiceImpl implements QuizService {
     private final RestTemplate restTemplate;
 
     private final ObjectMapper objectMapper;
+
+    @Value("${openai.api.key}")
+    private String apiKey;
     @Override
     @Transactional
     public QuizDto createQuiz(Long categoryId, QuizAM quizAM) {
@@ -90,7 +94,7 @@ public class QuizServiceImpl implements QuizService {
 
         String urlOpenAPI = "https://api.openai.com/v1/chat/completions";
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + AppConstant.OPENAI_API_KEY);
+        headers.set("Authorization", "Bearer " + apiKey);
         headers.set("Content-Type", "application/json");
         GenerateQuizRequest generateQuizRequest = new GenerateQuizRequest();
         generateQuizRequest.setModel("gpt-3.5-turbo-1106");
